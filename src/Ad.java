@@ -1,11 +1,14 @@
 /**
  * 廣告 Entity
+ *
  * @author cznno
- * Created by cznno on 17-6-30.
+ *         Created by cznno on 17-6-30.
  */
 public class Ad {
 
     private Integer id;
+    private Integer media_id;
+    private String device_id;
     private Integer length;
     private Integer start;
     private Integer end;
@@ -51,18 +54,33 @@ public class Ad {
         this.loopTimes = loopTimes;
     }
 
-    public Ad(Integer id, Integer length, Integer start, Integer end) {
-        this.id = id;
-        this.length = length;
-        this.start = start;
-        this.end = end;
+    public Integer getMedia_id() {
+        return media_id;
     }
 
-    public Ad(Integer id, Integer length, Integer start, Integer end, Integer loopTimes) {
-        this.id = id;
+    public void setMedia_id(Integer media_id) {
+        this.media_id = media_id;
+    }
+
+    public String getDevice_id() {
+        return device_id;
+    }
+
+    public void setDevice_id(String device_id) {
+        this.device_id = device_id;
+    }
+
+    public Ad() {
+    }
+
+    public Ad(Integer media_id, String device_id, Integer length, Integer start, Integer end, Integer loopTimes) {
+        this.media_id = media_id;
+        this.device_id = device_id;
         this.length = length;
         this.start = start;
         this.end = end;
         this.loopTimes = loopTimes;
     }
 }
+
+

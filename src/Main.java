@@ -1,7 +1,4 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.util.*;
-import java.util.logging.Level;
 
 /**
  * 演示類
@@ -22,25 +19,24 @@ public class Main {
         Map<Integer, Integer> statisitc = new HashMap<>();
 
         //input
-        Ad ad_0 = new Ad(0, 110, 0, 86400,-1);     //default ad
-        Ad ad_1 = new Ad(1, 150, 18000, 72000, 0);     //custom ads
-        Ad ad_2 = new Ad(2, 100, 36000, 57600, 22);
-        Ad ad_3 = new Ad(3, 180, 54000, 72000, 0);
-        Ad ad_4 = new Ad(4, 130, 64000, 72000, 0);
-        Ad ad_5 = new Ad(5, 120, 54000, 62000, 12);
+        Ad ad_0 = new Ad(0, "10524869", 11, 0, 86400, -1);     //default ad
+        Ad ad_1 = new Ad(10001, "10524869", 15, 18000, 72000, 0);     //custom ads
+        Ad ad_2 = new Ad(10002, "10524869", 100, 36000, 57600, 22);
+        Ad ad_3 = new Ad(10003, "10524869", 180, 54000, 72000, 0);
+        Ad ad_4 = new Ad(10004, "10524869", 130, 64000, 72000, 0);
+        Ad ad_5 = new Ad(10005, "10524869", 120, 54000, 62000, 12);
 
         //generate list of ads
         List<Ad> adList = new ArrayList<>();
         adList.add(ad_0);
         adList.add(ad_1);
-        adList.add(ad_2);
-        adList.add(ad_3);
-        adList.add(ad_4);
-        adList.add(ad_5);
+//        adList.add(ad_2);
+//        adList.add(ad_3);
+//        adList.add(ad_4);
+//        adList.add(ad_5);
 
-        AdSort adSortList = new AdSort();
         //set sections
-        List<Section> sectionList = adSortList.getSectionList(adList);
+        List<Section> sectionList = AdPlayListUtil.generateSections(adList);
 
         //statistic init
         statisitc.put(0, 0);
@@ -54,7 +50,7 @@ public class Main {
             System.out.println("--------------------------");
             System.out.println("第" + i + "區間");
             Map<Integer, Integer> playInfo;
-            playInfo = getPlayListInfo(adSortList.sorting(section, adList), adList);
+            playInfo = getPlayListInfo(AdPlayListUtil.sorting(section, adList), adList);
 
             for (Map.Entry<Integer, Integer> entry : playInfo.entrySet()) {
                 statisitc.put(entry.getKey(), entry.getValue() + (Integer) statisitc.get(entry.getKey()));

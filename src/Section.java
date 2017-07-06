@@ -3,22 +3,15 @@ import java.util.Map;
 
 /**
  * 播放區間 Entity
+ *
  * @author cznno
- * Created by cznno on 17-6-30.
+ *         Created by cznno on 17-6-30.
  */
 public class Section {
-    private int[] ads;
+
+    private Map<Integer, Integer> adsInfo;
     private Integer start;
     private Integer end;
-    Map<Integer,Integer> adWeight;
-
-    public int[] getAds() {
-        return ads;
-    }
-
-    public void setAds(int[] ads) {
-        this.ads = ads;
-    }
 
     public Integer getStart() {
         return start;
@@ -36,29 +29,21 @@ public class Section {
         this.end = end;
     }
 
-    public Map<Integer, Integer> getAdWeight() {
-        return adWeight;
+    public Map<Integer, Integer> getAdsInfo() {
+        return adsInfo;
     }
 
-    public void setAdWeight(Map<Integer, Integer> adWeight) {
-        this.adWeight = adWeight;
+    public void setAdsInfo(Map<Integer, Integer> adsInfo) {
+        this.adsInfo = adsInfo;
     }
 
-    public Section(int[] ads, Integer start, Integer end) {
-        this.ads = ads;
+    public Section() {
+
+    }
+
+    public Section(Map<Integer, Integer> adsInfo, Integer start, Integer end) {
+        this.adsInfo = adsInfo;
         this.start = start;
         this.end = end;
-    }
-
-    public Section(List<Integer> ads, int start, int end, Map<Integer, Integer> adWeight) {
-        int[] adsInt = new int[ads.size()];
-        for(int i=0;i<ads.size();i++)
-        {
-            adsInt[i] = ads.get(i);
-        }
-        this.ads = adsInt;
-        this.start = start;
-        this.end = end;
-        this.adWeight = adWeight;
     }
 }
